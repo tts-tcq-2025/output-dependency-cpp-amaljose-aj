@@ -9,7 +9,7 @@ struct ColorPair {
     std::string minorColor;
 };
 
-std::vector<ColorPair> generateColorMap() {
+std::vector<ColorPair> printColorMap() {
     const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
     const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
     std::vector<ColorPair> colorMap;
@@ -17,6 +17,7 @@ std::vector<ColorPair> generateColorMap() {
     for(i = 0; i < 5; i++) {
         for(j = 0; j < 5; j++) {
             colorMap.push_back({i * 5 + j, majorColor[i], minorColor[j]});
+            std::cout << i * 5 + j << " | " << majorColor[i] << " | " << minorColor[j] << "\n";
         }
     }
     return colorMap;
@@ -24,7 +25,7 @@ std::vector<ColorPair> generateColorMap() {
 
 void testPrintColorMap() {
     std::cout << "\nPrint color map test\n"; 
-    auto result = generateColorMap();
+    auto result = printColorMap();
     assert(result.size() == 25);
     assert(result[0].majorColor == "White" && result[0].minorColor == "Blue");
     assert(result[24].majorColor == "Violet" && result[24].minorColor == "Slate");
